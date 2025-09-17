@@ -1,0 +1,6 @@
+signup_core_env:
+  idp_service_url: https://localhost:9443
+  domain_idp_register: BUDDYBETS-AUTH-CONN/
+
+
+
