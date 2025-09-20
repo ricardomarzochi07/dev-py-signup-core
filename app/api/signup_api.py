@@ -26,11 +26,9 @@ async def post_register_user(data: SignupSubmitRequest,
                              user: UserClaims = Depends(FastAPIAuthorization()),
                              config: AppConfig = Depends(load_config)):
     logger.info("Execute Request - signup_submit")
-    print(" +++++++++++++ USER SUB ++++++ ", user.sub)
-    print(" +++++++++++++ USER  TOKEN ++++++ ", user.token)
     try:
         signup_service = SignupRegisterServiceImpl(config)
-        response = signup_service.register_user_idp(user_oidc_data=data, token=user.token)
+        response = await signup_service.register_user_idp(user_oidc_data=data, token=user.token)
         return response
     except Exception as e:
         logger.error(f"Error register_user_idp: {e}")

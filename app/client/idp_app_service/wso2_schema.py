@@ -13,7 +13,6 @@ class Name(BaseModel):
 class Email(BaseModel):
     primary: bool
     value: EmailStr
-    type: str
 
 
 class UserSchema(BaseModel):
