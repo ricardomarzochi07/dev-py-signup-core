@@ -1,0 +1,29 @@
+{
+  "invalid_user_data": {
+    "en": "The user data provided is invalid.",
+    "es": "Los datos proporcionados del usuario no son válidos.",
+    "fr": "Les données fournies pour l'utilisateur ne sont pas valides."
+  },
+  "resource_not_found": {
+    "en": "The requested resource could not be found.",
+    "es": "No se pudo encontrar el recurso solicitado",
+    "fr": "La ressource demandée est introuvable.."
+  },
+  "external_service_error": {
+    "en": "An error occurred while communicating with an external service",
+    "es": "Ocurrió un error al comunicarse con un servicio externo.",
+    "fr": "Une erreur s'est produite lors de la communication avec un service externe."
+  },
+  "user_registration_confirm": {
+    "en": "User registration confirmed successfully.",
+    "es": "Registro de usuario confirmado con éxito.",
+    "fr": "Enregistrement de l'utilisateur confirmé avec succès."
+  },
+  "user_already_exists": {
+    "en": "The user is already registered in the system.",
+    "es": "El usuario ya está registrado en el sistema.",
+    "fr": "L'utilisateur est déjà enregistré dans le système.",
+    "pt": "O usuário já se encontra cadastrado no sistema."
+ }
+
+}

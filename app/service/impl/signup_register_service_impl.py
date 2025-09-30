@@ -17,33 +17,21 @@ class SignupRegisterServiceImpl(SignupRegisterService):
 
     async def register_user_idp(self, user_oidc_data: SignupSubmitRequest, token: str) -> HttpResponseSchema:
         self.logger.info("Execute Request - register_user_idp")
-        try:
-            # Crear instancia de SignupCoreServiceSchema solo con atributos comunes
-            user_idp_data = UserSchema(
-                userName=self.env_var.domain_idp_register + user_oidc_data.username,
-                password=user_oidc_data.password,
-                name=Name(
-                    givenName=user_oidc_data.firstName,
-                    familyName=user_oidc_data.lastName
-                ),
-                emails=[Email(
-                    primary=True,
-                    value=user_oidc_data.email)]
-            )
-            print(" USER_IDP_DATA_OBJ +++++++++++++++++++++++ ", user_idp_data.json())
-            client = Wso2isClient()
-            response = await client.post_register_user_in_idp(
-                data=user_idp_data,
-                access_token=token,
-                url_base=self.env_var.idp_service_url
-            )
-            # Validación centralizada
-            return response
-        except Exception as e:
-            self.logger.error(f"Error register_user_idp: {e}")
-            return HttpResponseSchema(
-                status_response=False,
-                status_code=500,
-                data=None,
-                message=f"Unhandled exception: {str(e)}"
-            )
+        # Crear instancia de SignupCoreServiceSchema solo con atributos comunes
+        user_idp_data = UserSchema(
+            userName=self.env_var.domain_idp_register + user_oidc_data.username,
+            password=user_oidc_data.password,
+            name=Name(
+                givenName=user_oidc_data.firstName,
+                familyName=user_oidc_data.lastName
+            ),
+            emails=[Email(
+                primary=True,
+                value=user_oidc_data.email)]
+        )
+        # Llamar al cliente IdP
+        client = Wso2isClient()
+        response = await client.post_register_user_in_idp(
+            data=user_idp_data, access_token=token, url_base=self.env_var.idp_service_url
+        )
+        return response
